@@ -58,16 +58,14 @@ interface OptionDefinition {
 
 // Ensure type consistency for options and selectedOption
 export function InputLanguage() {
-    const [selectedOption, setSelectedOption] = useState<OptionDefinition>({
-        label: 'English',
-        value: 'en-US',
-    });
+    const [selectedOption, setSelectedOption] = useState<OptionDefinition>({ label: 'English', value: 'en-US' });
+
 
     return (
         <Select
             selectedOption={selectedOption}
             onChange={({ detail }) =>
-                setSelectedOption([...detail.selectedOption])
+                setSelectedOption(detail.selectedOption)
             }
 
             options={[
