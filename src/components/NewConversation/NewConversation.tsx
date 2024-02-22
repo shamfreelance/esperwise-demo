@@ -252,7 +252,8 @@ export default function NewConversation() {
                     >
                         <SpaceBetween direction="vertical" size="xl">
                             <InputName jobName={jobName} setJobName={setJobName} />
-                            <InputLanguage selectedOption={selectedOption} setSelectedOption={setSelectedOption} />
+                            {/* <InputLanguage selectedOption={selectedOption} setSelectedOption={setSelectedOption} /> */}
+                            <InputLanguage />
                             <AudioIdentificationType
                                 audioSelection={audioSelection}
                                 setAudioSelection={setAudioSelection}

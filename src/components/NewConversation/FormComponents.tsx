@@ -28,26 +28,47 @@ export function InputName({ jobName, setJobName }: InputNameProps) {
     );
 }
 
-interface InputLanguageProps {
-    selectedOption: string;
-    setSelectedOption: (option: string) => void;
-} // type defined
+// interface InputLanguageProps {
+//     selectedOption: string;
+//     setSelectedOption: (option: string) => void;
+// } // type defined
 
-export function InputLanguage({ selectedOption, setSelectedOption }: InputLanguageProps) {
-    return (
-        <FormField label="Language" description="Set language for transcription and analysis algorithms.">
-            <Select
-                selectedOption={selectedOption}
-                onChange={({ detail }) => setSelectedOption(detail.selectedOption)}
-                options={[
-                    { value: 'en-US', label: 'English' },
-                    { value: 'nl-NL', label: 'Dutch' },
-                    { value: 'fr-FR', label: 'French' },
-                    { value: 'de-DE', label: 'German' },
-                ]}
-            />
-        </FormField>
-    );
+// export function InputLanguage({ selectedOption, setSelectedOption }: InputLanguageProps) {
+//     return (
+//         <FormField label="Language" description="Set language for transcription and analysis algorithms.">
+//             <Select
+//                 selectedOption={selectedOption}
+//                 onChange={({ detail }) => setSelectedOption(detail.selectedOption)}
+//                 options={[
+//                     { value: 'en-US', label: 'English' },
+//                     { value: 'nl-NL', label: 'Dutch' },
+//                     { value: 'fr-FR', label: 'French' },
+//                     { value: 'de-DE', label: 'German' },
+//                 ]}
+//             />
+//         </FormField>
+//     );
+// }
+
+export function InputLanguage() {
+    const [
+        selectedOption,
+        setSelectedOption
+      ] = React.useState({ label: 'English', value: 'en-US'});
+      return (
+        <Select
+          selectedOption={selectedOption}
+          onChange={({ detail }) =>
+            setSelectedOption(detail.selectedOption)
+          }
+          options={[
+                    { label: 'English', value: 'en-US'},
+                    { label: 'Dutch', value: 'nl-NL' },
+                    { label: 'French', value: 'fr-FR' },
+                    { label: 'German', value: 'de-DE' },
+          ]}
+        />
+      );
 }
 
 type AudioIdentificationTypeProps = {
