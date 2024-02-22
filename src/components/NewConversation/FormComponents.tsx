@@ -1,4 +1,4 @@
-// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+    // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: MIT-0
 import React from 'react';
 
@@ -28,7 +28,12 @@ export function InputName({ jobName, setJobName }: InputNameProps) {
     );
 }
 
-export function InputLanguage({ selectedOption, setSelectedOption }) {
+interface InputLanguageProps {
+    selectedOption: string;
+    setSelectedOption: (option: string) => void;
+}
+
+export function InputLanguage({ selectedOption, setSelectedOption }: InputLanguageProps) {
     return (
         <FormField label="Language" description="Set language for transcription and analysis algorithms.">
             <Select
