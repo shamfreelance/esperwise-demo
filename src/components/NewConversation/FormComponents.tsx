@@ -31,7 +31,7 @@ export function InputName({ jobName, setJobName }: InputNameProps) {
 interface InputLanguageProps {
     selectedOption: string;
     setSelectedOption: (option: string) => void;
-}
+} // type defined
 
 export function InputLanguage({ selectedOption, setSelectedOption }: InputLanguageProps) {
     return (
