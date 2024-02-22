@@ -1,5 +1,3 @@
-// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
-// SPDX-License-Identifier: MIT-0
 import React, { useState } from 'react';
 
 import Button from '@cloudscape-design/components/button';
@@ -17,6 +15,8 @@ import Spinner from '@cloudscape-design/components/spinner';
 import * as settingOptions from '@/store/appSettings/settingOptions';
 import { useAppSettingsContext } from '@/store/appSettings';
 import { DEFAULT_SETTINGS } from '@/store/appSettings/defaultSettings';
+
+import CustomNotes from './CustomNotes';
 
 export type AppSettings = {
     'app.region': { label: string; value: string };
@@ -93,16 +93,22 @@ export default function Settings() {
                     >
                         <SpaceBetween size={'m'}>
                             <FormField
-                                label="AWS HealthScribe Region"
-                                description="During the public preview, AWS HealthScribe is available in the US East (N. Virginia) region."
+                                label="Custom Note Tags"
+                                description="Doctor can select custom tags available for final AI generated analysis."
                             >
-                                <Select
-                                    selectedOption={settings['app.region']}
-                                    onChange={({ detail }) => updateSettings('app.region', detail.selectedOption)}
-                                    options={settingOptions.appRegionOptions}
-                                />
+                                <CustomNotes></CustomNotes>
                             </FormField>
                             <ExpandableSection headerText="Advanced">
+                                <FormField
+                                    label="AWS Cloud Region"
+                                    description="During the public preview, AWS Cloud is available in the US East (N. Virginia) region."
+                                >
+                                    <Select
+                                        selectedOption={settings['app.region']}
+                                        onChange={({ detail }) => updateSettings('app.region', detail.selectedOption)}
+                                        options={settingOptions.appRegionOptions}
+                                    />
+                                </FormField>
                                 <SpaceBetween direction="vertical" size="m">
                                     <FormField
                                         label="API Timing"

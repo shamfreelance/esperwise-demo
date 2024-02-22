@@ -30,7 +30,7 @@ import sleep from '@/utils/sleep';
 import amplifyCustom from '../../aws-custom.json';
 import AudioRecorder from './AudioRecorder';
 import { AudioDropzone } from './Dropzone';
-import { AudioDetailSettings, AudioIdentificationType, InputName } from './FormComponents';
+import { AudioDetailSettings, AudioIdentificationType, InputLanguage, InputName } from './FormComponents';
 import styles from './NewConversation.module.css';
 import { verifyJobParams } from './formUtils';
 import { AudioDetails, AudioSelection } from './types';
@@ -42,6 +42,7 @@ export default function NewConversation() {
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false); // is job submitting
     const [formError, setFormError] = useState<string | JSX.Element[]>('');
     const [jobName, setJobName] = useState<string>(''); // form - job name
+    const [selectedOption, setSelectedOption] = React.useState({ label: 'English', value: 'en-US' }); // choose language
     const [audioSelection, setAudioSelection] = useState<AudioSelection>('speakerPartitioning'); // form - audio selection
     // form - audio details
     const [audioDetails, setAudioDetails] = useState<AudioDetails>({
@@ -219,10 +220,7 @@ export default function NewConversation() {
     return (
         <ContentLayout
             header={
-                <Header
-                    description="Upload your audio file to be processed by AWS HealthScribe"
-                    variant="awsui-h1-sticky"
-                >
+                <Header description="Upload your audio file to be processed by EsperWise" variant="awsui-h1-sticky">
                     New Conversation
                 </Header>
             }
@@ -231,7 +229,7 @@ export default function NewConversation() {
                 header={
                     <Header
                         variant="h3"
-                        description="Note: AWS HealthScribe offers additional features not built into this demo, such as Custom Vocabulary, Content Removal, and more. This is available via the AWS console, API, or SDK."
+                        description="Note: EsperWise offers additional features not built into this demo, such as Custom Vocabulary, Content Removal, and more. This is available via the AWS console, API, or SDK."
                     />
                 }
             >
@@ -254,6 +252,7 @@ export default function NewConversation() {
                     >
                         <SpaceBetween direction="vertical" size="xl">
                             <InputName jobName={jobName} setJobName={setJobName} />
+                            <InputLanguage selectedOption={selectedOption} setSelectedOption={setSelectedOption} />
                             <AudioIdentificationType
                                 audioSelection={audioSelection}
                                 setAudioSelection={setAudioSelection}
@@ -275,7 +274,7 @@ export default function NewConversation() {
                                         >
                                             <Popover
                                                 header="Live Recording"
-                                                content="The audio file will be submitted to AWS HealthScribe after the recording is complete. Please position your device or microphone so it can capture all conversation participants."
+                                                content="The audio file will be submitted to EsperWise after the recording is complete. Please position your device or microphone so it can capture all conversation participants."
                                             >
                                                 <StatusIndicator type="info">New</StatusIndicator>
                                             </Popover>

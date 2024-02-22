@@ -105,7 +105,7 @@ export default function Conversations() {
     // Table collection
     const { items, actions, collectionProps, paginationProps } = useCollection(healthScribeJobs, {
         filtering: {
-            empty: <TableEmptyState title="No HealthScribe jobs" subtitle="Try clearing the search filter." />,
+            empty: <TableEmptyState title="No EsperWise jobs" subtitle="Try clearing the search filter." />,
             noMatch: (
                 <TableEmptyState
                     title="No matches"

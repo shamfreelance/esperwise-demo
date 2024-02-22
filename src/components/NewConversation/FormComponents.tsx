@@ -7,6 +7,7 @@ import FormField from '@cloudscape-design/components/form-field';
 import Grid from '@cloudscape-design/components/grid';
 import Input from '@cloudscape-design/components/input';
 import RadioGroup from '@cloudscape-design/components/radio-group';
+import Select from '@cloudscape-design/components/select';
 import TextContent from '@cloudscape-design/components/text-content';
 
 import styles from './NewConversation.module.css';
@@ -23,6 +24,23 @@ export function InputName({ jobName, setJobName }: InputNameProps) {
             description="The name can be up to 200 characters long. Valid characters are a-z, A-Z, 0-9, . (period), _ (underscore), and – (hyphen)."
         >
             <Input onChange={({ detail }) => setJobName(detail.value)} placeholder="Name" value={jobName} />
+        </FormField>
+    );
+}
+
+export function InputLanguage({ selectedOption, setSelectedOption }) {
+    return (
+        <FormField label="Language" description="Set language for transcription and analysis algorithms.">
+            <Select
+                selectedOption={selectedOption}
+                onChange={({ detail }) => setSelectedOption(detail.selectedOption)}
+                options={[
+                    { value: 'en-US', label: 'English' },
+                    { value: 'nl-NL', label: 'Dutch' },
+                    { value: 'fr-FR', label: 'French' },
+                    { value: 'de-DE', label: 'German' },
+                ]}
+            />
         </FormField>
     );
 }

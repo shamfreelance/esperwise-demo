@@ -40,20 +40,20 @@ export default function SideNav({ activeHref }: SideNavProps) {
         { type: 'divider' },
         {
             type: 'link',
-            text: 'AWS HealthScribe',
-            href: 'https://aws.amazon.com/healthscribe',
+            text: 'EsperWise',
+            href: 'https://esperwise.com',
             external: true,
         },
         {
             type: 'link',
-            text: 'AWS for Health',
-            href: 'https://aws.amazon.com/health',
+            text: 'EsperWsie for Dutch',
+            href: 'https://esperwise.com/dutch',
             external: true,
         },
         {
             type: 'link',
-            text: 'Amazon Web Services',
-            href: 'https://aws.amazon.com',
+            text: 'EsperWise for German',
+            href: 'https://esperwise.com/german',
             external: true,
         },
     ];
@@ -61,7 +61,7 @@ export default function SideNav({ activeHref }: SideNavProps) {
     return (
         <SideNavigation
             activeHref={activeHref}
-            header={{ text: 'AWS HealthScribe', href: '/' }}
+            header={{ text: 'EsperWise', href: '/' }}
             items={sideNavItems}
             onFollow={(e) => {
                 e.preventDefault();

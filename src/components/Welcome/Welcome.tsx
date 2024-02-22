@@ -1,4 +1,4 @@
-// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright EsperWise.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: MIT-0
 import React, { memo } from 'react';
 
@@ -22,10 +22,10 @@ function Welcome() {
         if (user) {
             return (
                 <TextContent>
-                    <p>This sample ReactJS-based web app shows the art of the possible in using AWS HealthScribe.</p>
+                    <p>This sample ReactJS-based web app shows the art of the possible in using EsperWise.</p>
                     <p>
-                        AWS HealthScribe is a HIPAA-eligible service empowering healthcare software vendors to build
-                        clinical applications that automatically generate clinical notes by analyzing patient-clinician
+                        EsperWise is a HIPAA-eligible service empowering healthcare software vendors to build clinical
+                        applications that automatically generate clinical notes by analyzing patient-clinician
                         conversations.
                     </p>
                     <p>Currently this demo allows you to:</p>
@@ -49,9 +49,7 @@ function Welcome() {
                             .
                         </li>
                         <li>
-                            <Link onFollow={() => navigate('/new')}>
-                                Submit your own audio file to AWS HealthScribe.
-                            </Link>
+                            <Link onFollow={() => navigate('/new')}>Submit your own audio file to EsperWise.</Link>
                         </li>
                         <li>
                             <Link onFollow={() => navigate('/generate')}>Generate a multi-speaker audio file</Link>{' '}
@@ -72,7 +70,7 @@ function Welcome() {
     function Footer() {
         return (
             <Box textAlign="center" color="text-body-secondary" fontSize="body-s">
-                <p>Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.</p>
+                <p>Copyright EsperWise.com, Inc. or its affiliates. All Rights Reserved.</p>
                 <p>
                     Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
                     associated documentation files (the &quot;Software&quot;), to deal in the Software without
@@ -92,7 +90,7 @@ function Welcome() {
     }
 
     return (
-        <ContentLayout header={<Header variant="h2">Demo Application Experience powered by AWS HealthScribe</Header>}>
+        <ContentLayout header={<Header variant="h2">Demo Application Experience powered by EsperWise</Header>}>
             <Container footer={<Footer />}>
                 <Content />
             </Container>
