@@ -1,6 +1,7 @@
-    // Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
+// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
 // SPDX-License-Identifier: MIT-0
-import React from 'react';
+import React, { useState } from 'react';
+
 
 import Box from '@cloudscape-design/components/box';
 import FormField from '@cloudscape-design/components/form-field';
@@ -53,28 +54,31 @@ export function InputName({ jobName, setJobName }: InputNameProps) {
 interface OptionDefinition {
     label: string;
     value: string;
-  }
-  
-  // Ensure type consistency for options and selectedOption
-  export function InputLanguage() {
+}
+
+// Ensure type consistency for options and selectedOption
+export function InputLanguage() {
     const [selectedOption, setSelectedOption] = useState<OptionDefinition>({
-      label: 'English',
-      value: 'en-US',
+        label: 'English',
+        value: 'en-US',
     });
-  
+
     return (
-      <Select
-        selectedOption={selectedOption}
-        onChange={({ detail }) => setSelectedOption(detail.selectedOption as OptionDefinition)} // Ensure type safety for detail.selectedOption
-        options={[
-          { label: 'English', value: 'en-US' },
-          { label: 'Dutch', value: 'nl-NL' },
-          { label: 'French', value: 'fr-FR' },
-          { label: 'German', value: 'de-DE' },
-        ] as OptionDefinition[]} // Explicitly cast options as OptionDefinition[]
-      />
+        <Select
+            selectedOption={selectedOption}
+            onChange={({ detail }) =>
+                setSelectedOption([...detail.selectedOption])
+            }
+
+            options={[
+                { label: 'English', value: 'en-US' },
+                { label: 'Dutch', value: 'nl-NL' },
+                { label: 'French', value: 'fr-FR' },
+                { label: 'German', value: 'de-DE' },
+            ] as OptionDefinition[]} // Explicitly cast options as OptionDefinition[]
+        />
     );
-  }
+}
 
 type AudioIdentificationTypeProps = {
     audioSelection: AudioSelection;
