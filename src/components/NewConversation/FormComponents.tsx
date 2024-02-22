@@ -50,26 +50,31 @@ export function InputName({ jobName, setJobName }: InputNameProps) {
 //     );
 // }
 
-export function InputLanguage() {
-    const [
-        selectedOption,
-        setSelectedOption
-      ] = React.useState({ label: 'English', value: 'en-US'});
-      return (
-        <Select
-          selectedOption={selectedOption}
-          onChange={({ detail }) =>
-            setSelectedOption(detail.selectedOption)
-          }
-          options={[
-                    { label: 'English', value: 'en-US'},
-                    { label: 'Dutch', value: 'nl-NL' },
-                    { label: 'French', value: 'fr-FR' },
-                    { label: 'German', value: 'de-DE' },
-          ]}
-        />
-      );
-}
+interface OptionDefinition {
+    label: string;
+    value: string;
+  }
+  
+  // Ensure type consistency for options and selectedOption
+  export function InputLanguage() {
+    const [selectedOption, setSelectedOption] = useState<OptionDefinition>({
+      label: 'English',
+      value: 'en-US',
+    });
+  
+    return (
+      <Select
+        selectedOption={selectedOption}
+        onChange={({ detail }) => setSelectedOption(detail.selectedOption as OptionDefinition)} // Ensure type safety for detail.selectedOption
+        options={[
+          { label: 'English', value: 'en-US' },
+          { label: 'Dutch', value: 'nl-NL' },
+          { label: 'French', value: 'fr-FR' },
+          { label: 'German', value: 'de-DE' },
+        ] as OptionDefinition[]} // Explicitly cast options as OptionDefinition[]
+      />
+    );
+  }
 
 type AudioIdentificationTypeProps = {
     audioSelection: AudioSelection;
