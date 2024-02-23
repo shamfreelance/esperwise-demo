@@ -69,7 +69,7 @@ export function InputLanguage() {
             onChange={({ detail }) => setSelectedOption(() => ({
                 value: detail.selectedOption.value,
                 label: detail.selectedOption.label,
-              }))
+              }))}
 
             options={[
                 { label: 'English', value: 'en-US' },
