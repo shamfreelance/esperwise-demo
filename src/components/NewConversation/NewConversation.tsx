@@ -28,7 +28,7 @@ import sleep from '@/utils/sleep';
 import amplifyCustom from '../../aws-custom.json';
 import AudioRecorder from './AudioRecorder';
 import { AudioDropzone } from './Dropzone';
-import { AudioDetailSettings, AudioIdentificationType, InputName, InputLanguage } from './FormComponents';
+import { AudioDetailSettings, AudioIdentificationType, InputName } from './FormComponents';
 import styles from './NewConversation.module.css';
 import { verifyJobParams } from './formUtils';
 import { AudioDetails, AudioSelection } from './types';
@@ -40,7 +40,7 @@ export default function NewConversation() {
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false); // is job submitting
     const [formError, setFormError] = useState<string | JSX.Element[]>('');
     const [jobName, setJobName] = useState<string>(''); // form - job name
-    const [inputLanguage, setInputLanguage] = useState({ value: 'en-US', label: 'English (US)' }); // Set default language
+    // const [inputLanguage, setInputLanguage] = useState({ value: 'en-US', label: 'English (US)' }); // Set default language
     const [audioSelection, setAudioSelection] = useState<AudioSelection>('speakerPartitioning'); // form - audio selection
     // form - audio details
     const [audioDetails, setAudioDetails] = useState<AudioDetails>({
@@ -250,7 +250,7 @@ export default function NewConversation() {
                     >
                         <SpaceBetween direction="vertical" size="xl">
                             <InputName jobName={jobName} setJobName={setJobName} />
-                            <InputLanguage inputLanguage={inputLanguage} setInputLanguage={setInputLanguage} />
+                            {/* <InputLanguage inputLanguage={inputLanguage} setInputLanguage={setInputLanguage} /> */}
                             <AudioIdentificationType
                                 audioSelection={audioSelection}
                                 setAudioSelection={setAudioSelection}
