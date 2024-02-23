@@ -104,27 +104,27 @@ export default function NewConversation() {
         const audioParams =
             audioSelection === 'speakerPartitioning'
                 ? {
-                    Settings: {
-                        MaxSpeakerLabels: audioDetails.speakerPartitioning.maxSpeakers,
-                        ShowSpeakerLabels: true,
-                    },
-                }
+                      Settings: {
+                          MaxSpeakerLabels: audioDetails.speakerPartitioning.maxSpeakers,
+                          ShowSpeakerLabels: true,
+                      },
+                  }
                 : {
-                    ChannelDefinitions: [
-                        {
-                            ChannelId: 0,
-                            ParticipantRole: audioDetails.channelIdentification.channel1,
-                        },
-                        {
-                            ChannelId: 1,
-                            ParticipantRole:
-                                audioDetails.channelIdentification.channel1 === 'CLINICIAN' ? 'PATIENT' : 'CLINICIAN',
-                        },
-                    ],
-                    Settings: {
-                        ChannelIdentification: true,
-                    },
-                };
+                      ChannelDefinitions: [
+                          {
+                              ChannelId: 0,
+                              ParticipantRole: audioDetails.channelIdentification.channel1,
+                          },
+                          {
+                              ChannelId: 1,
+                              ParticipantRole:
+                                  audioDetails.channelIdentification.channel1 === 'CLINICIAN' ? 'PATIENT' : 'CLINICIAN',
+                          },
+                      ],
+                      Settings: {
+                          ChannelIdentification: true,
+                      },
+                  };
 
         const uploadLocation = getUploadMetadata();
         const s3Location = {

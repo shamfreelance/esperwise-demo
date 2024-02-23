@@ -4,11 +4,11 @@ import Box from '@cloudscape-design/components/box';
 import FormField from '@cloudscape-design/components/form-field';
 import Grid from '@cloudscape-design/components/grid';
 import Input from '@cloudscape-design/components/input';
+import { OptionDefinition } from '@cloudscape-design/components/internal/components/option/interfaces';
 import RadioGroup from '@cloudscape-design/components/radio-group';
-import TextContent from '@cloudscape-design/components/text-content';
 // Import Select component
 import Select from '@cloudscape-design/components/select';
-import { OptionDefinition } from '@cloudscape-design/components/internal/components/option/interfaces';
+import TextContent from '@cloudscape-design/components/text-content';
 
 import styles from './NewConversation.module.css';
 import { AudioDetails, AudioSelection } from './types';
@@ -36,7 +36,6 @@ export function InputName({ jobName, setJobName }: InputNameProps) {
 // type InputSettings = {
 //     'input.lang': { label: string; value: string };
 // };
-
 
 // export function InputLanguage({ selectedOption, setSelectedOption }: InputLanguageProps) {
 

@@ -107,17 +107,12 @@ export default function Settings() {
                             >
                                 <CustomNotes />
                             </FormField> */}
-                            <FormField
-                                label="Language"
-                                description="Select your preferred language."
-                            >
+                            <FormField label="Language" description="Select your preferred language.">
                                 <Select
                                     selectedOption={settings['app.language']}
-                                    onChange={({ detail }) =>
-                                        updateSettings('app.language', detail.selectedOption)
-                                    }
+                                    onChange={({ detail }) => updateSettings('app.language', detail.selectedOption)}
                                     options={languageOptions}
-                                    placeholder='Choose Language'
+                                    placeholder="Choose Language"
                                 />
                             </FormField>
                             <ExpandableSection headerText="Advanced">
@@ -143,7 +138,6 @@ export default function Settings() {
                                         options={settingOptions.apiTimings}
                                     />
                                 </FormField>
-
                             </ExpandableSection>
                         </SpaceBetween>
                     </Form>
