@@ -27,7 +27,6 @@ export function InputName({ jobName, setJobName }: InputNameProps) {
     );
 }
 
-
 type InputLanguageProps = {
     inputLanguage: string;
     setInputLanguage: React.Dispatch<React.SetStateAction<string>>;

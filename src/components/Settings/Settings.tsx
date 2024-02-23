@@ -1,3 +1,4 @@
+//  @ts-ignore
 import React, { useState } from 'react';
 
 import Button from '@cloudscape-design/components/button';
@@ -29,6 +30,8 @@ export default function Settings() {
     const [isSaving, setIsSaving] = useState(false);
     // Make a copy of appSettings, write back it after form validation
     const [settings, setSettings] = useState<AppSettings>(appSettings);
+
+    const [inputLanguage, setInputLanguage] = useState('');
 
     // Update local settings state
     function updateSettings(settingKey: string, value: string | OptionDefinition) {
@@ -99,6 +102,22 @@ export default function Settings() {
                                 {/* <CustomNotes></CustomNotes> */}
                             </FormField>
                             <ExpandableSection headerText="Advanced">
+                                <FormField
+                                    label="Input Language"
+                                    description="Select your preferred input language."
+                                >
+                                    <Select
+                                        selectedOption={inputLanguage}
+                                        onChange={({ detail }) => setInputLanguage(detail.selectedOption.value)}
+                                        options={[
+                                            { value: 'en-US', label: 'English (US)' },
+                                            { value: 'nl-NL', label: 'Dutch (Netherland)' },
+                                            { value: 'es-ES', label: 'Spanish (Spain)' },
+                                            { value: 'fr-FR', label: 'French (France)' },
+
+                                        ]}
+                                    />
+                                </FormField>
                                 <FormField
                                     label="AWS Cloud Region"
                                     description="During the public preview, AWS Cloud is available in the US East (N. Virginia) region."
