@@ -42,7 +42,7 @@ export default function NewConversation() {
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false); // is job submitting
     const [formError, setFormError] = useState<string | JSX.Element[]>('');
     const [jobName, setJobName] = useState<string>(''); // form - job name
-    const [selectedOption, setSelectedOption] = React.useState({ label: 'English', value: 'en-US' }); // choose language
+    const [inputLanguage, setInputLanguage] = useState('en-US'); // Set default language
     const [audioSelection, setAudioSelection] = useState<AudioSelection>('speakerPartitioning'); // form - audio selection
     // form - audio details
     const [audioDetails, setAudioDetails] = useState<AudioDetails>({
@@ -252,8 +252,7 @@ export default function NewConversation() {
                     >
                         <SpaceBetween direction="vertical" size="xl">
                             <InputName jobName={jobName} setJobName={setJobName} />
-                            {/* <InputLanguage selectedOption={selectedOption} setSelectedOption={setSelectedOption} /> */}
-                            <InputLanguage />
+                            <InputLanguage inputLanguage={inputLanguage} setInputLanguage={setInputLanguage} />
                             <AudioIdentificationType
                                 audioSelection={audioSelection}
                                 setAudioSelection={setAudioSelection}

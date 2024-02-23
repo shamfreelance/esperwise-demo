@@ -1,18 +1,41 @@
-// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
-// SPDX-License-Identifier: MIT-0
 import React, { useState } from 'react';
-
 
 import Box from '@cloudscape-design/components/box';
 import FormField from '@cloudscape-design/components/form-field';
 import Grid from '@cloudscape-design/components/grid';
 import Input from '@cloudscape-design/components/input';
 import RadioGroup from '@cloudscape-design/components/radio-group';
-import Select from '@cloudscape-design/components/select';
 import TextContent from '@cloudscape-design/components/text-content';
+// Import Select component
+import Select from '@cloudscape-design/components/select';
 
 import styles from './NewConversation.module.css';
 import { AudioDetails, AudioSelection } from './types';
+
+type InputLanguageProps = {
+    inputLanguage: string;
+    setInputLanguage: React.Dispatch<React.SetStateAction<string>>;
+};
+
+export function InputLanguage({ inputLanguage, setInputLanguage }: InputLanguageProps) {
+    return (
+        <FormField
+            label="Input language"
+            description="Select the language of the input audio."
+        >
+            <Select
+                onChange={({ detail }) => setInputLanguage(detail.value)}
+                value={inputLanguage}
+                items={[
+                    { value: 'en-US', label: 'English (US)' },
+                    { value: 'nl-NL', label: 'Dutch (Netherland)' },
+                    { value: 'es-ES', label: 'Spanish (Spain)' },
+                    { value: 'fr-FR', label: 'French (France)' },
+                ]}
+            />
+        </FormField>
+    );
+}
 
 type InputNameProps = {
     jobName: string;
@@ -26,58 +49,6 @@ export function InputName({ jobName, setJobName }: InputNameProps) {
         >
             <Input onChange={({ detail }) => setJobName(detail.value)} placeholder="Name" value={jobName} />
         </FormField>
-    );
-}
-
-// interface InputLanguageProps {
-//     selectedOption: string;
-//     setSelectedOption: (option: string) => void;
-// } // type defined
-
-// export function InputLanguage({ selectedOption, setSelectedOption }: InputLanguageProps) {
-//     return (
-//         <FormField label="Language" description="Set language for transcription and analysis algorithms.">
-//             <Select
-//                 selectedOption={selectedOption}
-//                 onChange={({ detail }) => setSelectedOption(detail.selectedOption)}
-//                 options={[
-//                     { value: 'en-US', label: 'English' },
-//                     { value: 'nl-NL', label: 'Dutch' },
-//                     { value: 'fr-FR', label: 'French' },
-//                     { value: 'de-DE', label: 'German' },
-//                 ]}
-//             />
-//         </FormField>
-//     );
-// }
-
-interface OptionDefinition {
-    label: string;
-    value: string;
-}
-
-// Ensure type consistency for options and selectedOption
-export function InputLanguage() {
-    const [selectedOption, setSelectedOption] = useState<OptionDefinition>({
-        label: 'English',
-        value: 'en-US',
-    });
-
-    return (
-        <Select
-            selectedOption={selectedOption}
-            onChange={({ detail }) => setSelectedOption(() => ({
-                value: detail.selectedOption.value,
-                label: detail.selectedOption.label,
-              }))}
-
-            options={[
-                { label: 'English', value: 'en-US' },
-                { label: 'Dutch', value: 'nl-NL' },
-                { label: 'French', value: 'fr-FR' },
-                { label: 'German', value: 'de-DE' },
-            ] as OptionDefinition[]} // Explicitly cast options as OptionDefinition[]
-        />
     );
 }
 
