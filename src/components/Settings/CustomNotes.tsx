@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import Multiselect from '@cloudscape-design/components/multiselect';
 
 interface OptionDefinition {
@@ -7,22 +6,14 @@ interface OptionDefinition {
     value: string;
 }
 
-// Explicitly define the type of the selectedOptions state
-const [selectedOptions, setSelectedOptions] = React.useState<OptionDefinition[]>([
-    {
-        label: 'History Of Present Illness',
-        value: 'History Of Present Illness',
-    },
-]);
-
-
 export default function CustomNotes() {
-    // const [selectedOptions, setSelectedOptions] = React.useState([
-    //     {
-    //         label: 'History Of Present Illness',
-    //         value: 'History Of Present Illness',
-    //     },
-    // ]);
+    const [selectedOptions, setSelectedOptions] = React.useState<OptionDefinition[]>([
+        {
+            label: 'History Of Present Illness',
+            value: 'History Of Present Illness',
+        },
+    ]);
+
     return (
         <Multiselect
             selectedOptions={selectedOptions}
