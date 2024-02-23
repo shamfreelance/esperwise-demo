@@ -1,4 +1,3 @@
-//  @ts-ignore
 import React, { useState } from 'react';
 
 import Button from '@cloudscape-design/components/button';
@@ -22,6 +21,7 @@ import { DEFAULT_SETTINGS } from '@/store/appSettings/defaultSettings';
 export type AppSettings = {
     'app.region': { label: string; value: string };
     'app.apiTiming': { label: string; value: string };
+    'app.language': { label: string; value: string };
 };
 
 export default function Settings() {
@@ -30,8 +30,6 @@ export default function Settings() {
     const [isSaving, setIsSaving] = useState(false);
     // Make a copy of appSettings, write back it after form validation
     const [settings, setSettings] = useState<AppSettings>(appSettings);
-
-    const [inputLanguage, setInputLanguage] = useState('');
 
     // Update local settings state
     function updateSettings(settingKey: string, value: string | OptionDefinition) {
@@ -61,6 +59,14 @@ export default function Settings() {
             window.location.reload();
         }, 300);
     }
+
+    // Language options
+    const languageOptions = [
+        { label: 'English', value: 'eng' },
+        { label: 'Dutch', value: 'dutch' },
+        { label: 'French', value: 'french' },
+        { label: 'German', value: 'german' },
+    ];
 
     return (
         <ContentLayout
@@ -95,29 +101,26 @@ export default function Settings() {
                         }
                     >
                         <SpaceBetween size={'m'}>
-                            <FormField
+                            {/* <FormField
                                 label="Custom Note Tags"
                                 description="Doctor can select custom tags available for final AI generated analysis."
                             >
-                                {/* <CustomNotes></CustomNotes> */}
+                                <CustomNotes />
+                            </FormField> */}
+                            <FormField
+                                label="Language"
+                                description="Select your preferred language."
+                            >
+                                <Select
+                                    selectedOption={settings['app.language']}
+                                    onChange={({ detail }) =>
+                                        updateSettings('app.language', detail.selectedOption)
+                                    }
+                                    options={languageOptions}
+                                    placeholder='Choose Language'
+                                />
                             </FormField>
                             <ExpandableSection headerText="Advanced">
-                                <FormField
-                                    label="Input Language"
-                                    description="Select your preferred input language."
-                                >
-                                    <Select
-                                        selectedOption={inputLanguage}
-                                        onChange={({ detail }) => setInputLanguage(detail.selectedOption.value)}
-                                        options={[
-                                            { value: 'en-US', label: 'English (US)' },
-                                            { value: 'nl-NL', label: 'Dutch (Netherland)' },
-                                            { value: 'es-ES', label: 'Spanish (Spain)' },
-                                            { value: 'fr-FR', label: 'French (France)' },
-
-                                        ]}
-                                    />
-                                </FormField>
                                 <FormField
                                     label="AWS Cloud Region"
                                     description="During the public preview, AWS Cloud is available in the US East (N. Virginia) region."
@@ -128,20 +131,19 @@ export default function Settings() {
                                         options={settingOptions.appRegionOptions}
                                     />
                                 </FormField>
-                                <SpaceBetween direction="vertical" size="m">
-                                    <FormField
-                                        label="API Timing"
-                                        description="Print API timing information in the browser console."
-                                    >
-                                        <Select
-                                            selectedOption={settings['app.apiTiming']}
-                                            onChange={({ detail }) =>
-                                                updateSettings('app.apiTiming', detail.selectedOption)
-                                            }
-                                            options={settingOptions.apiTimings}
-                                        />
-                                    </FormField>
-                                </SpaceBetween>
+                                <FormField
+                                    label="API Timing"
+                                    description="Print API timing information in the browser console."
+                                >
+                                    <Select
+                                        selectedOption={settings['app.apiTiming']}
+                                        onChange={({ detail }) =>
+                                            updateSettings('app.apiTiming', detail.selectedOption)
+                                        }
+                                        options={settingOptions.apiTimings}
+                                    />
+                                </FormField>
+
                             </ExpandableSection>
                         </SpaceBetween>
                     </Form>

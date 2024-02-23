@@ -40,7 +40,11 @@ export default function NewConversation() {
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false); // is job submitting
     const [formError, setFormError] = useState<string | JSX.Element[]>('');
     const [jobName, setJobName] = useState<string>(''); // form - job name
-    // const [inputLanguage, setInputLanguage] = useState({ value: 'en-US', label: 'English (US)' }); // Set default language
+    // const [inputLanguage, setInputLanguage] = useState(''); // Set default language
+    // const [
+    //     selectedOption,
+    //     setSelectedOption
+    //   ] = React.useState({ value: 'en-US', label: 'English (US)' });
     const [audioSelection, setAudioSelection] = useState<AudioSelection>('speakerPartitioning'); // form - audio selection
     // form - audio details
     const [audioDetails, setAudioDetails] = useState<AudioDetails>({
@@ -100,27 +104,27 @@ export default function NewConversation() {
         const audioParams =
             audioSelection === 'speakerPartitioning'
                 ? {
-                      Settings: {
-                          MaxSpeakerLabels: audioDetails.speakerPartitioning.maxSpeakers,
-                          ShowSpeakerLabels: true,
-                      },
-                  }
+                    Settings: {
+                        MaxSpeakerLabels: audioDetails.speakerPartitioning.maxSpeakers,
+                        ShowSpeakerLabels: true,
+                    },
+                }
                 : {
-                      ChannelDefinitions: [
-                          {
-                              ChannelId: 0,
-                              ParticipantRole: audioDetails.channelIdentification.channel1,
-                          },
-                          {
-                              ChannelId: 1,
-                              ParticipantRole:
-                                  audioDetails.channelIdentification.channel1 === 'CLINICIAN' ? 'PATIENT' : 'CLINICIAN',
-                          },
-                      ],
-                      Settings: {
-                          ChannelIdentification: true,
-                      },
-                  };
+                    ChannelDefinitions: [
+                        {
+                            ChannelId: 0,
+                            ParticipantRole: audioDetails.channelIdentification.channel1,
+                        },
+                        {
+                            ChannelId: 1,
+                            ParticipantRole:
+                                audioDetails.channelIdentification.channel1 === 'CLINICIAN' ? 'PATIENT' : 'CLINICIAN',
+                        },
+                    ],
+                    Settings: {
+                        ChannelIdentification: true,
+                    },
+                };
 
         const uploadLocation = getUploadMetadata();
         const s3Location = {
@@ -227,7 +231,7 @@ export default function NewConversation() {
                 header={
                     <Header
                         variant="h3"
-                        description="Note: EsperWise offers additional features not built into this demo, such as Custom Vocabulary, Content Removal, and more. This is available via the AWS console, API, or SDK."
+                        description="Note: EsperWise offers additional features not built into this demo, such as Custom Vocabulary, Content Removal, and more."
                     />
                 }
             >
@@ -250,7 +254,7 @@ export default function NewConversation() {
                     >
                         <SpaceBetween direction="vertical" size="xl">
                             <InputName jobName={jobName} setJobName={setJobName} />
-                            {/* <InputLanguage inputLanguage={inputLanguage} setInputLanguage={setInputLanguage} /> */}
+                            {/* <InputLanguage /> */}
                             <AudioIdentificationType
                                 audioSelection={audioSelection}
                                 setAudioSelection={setAudioSelection}

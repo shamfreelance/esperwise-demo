@@ -8,6 +8,7 @@ import RadioGroup from '@cloudscape-design/components/radio-group';
 import TextContent from '@cloudscape-design/components/text-content';
 // Import Select component
 import Select from '@cloudscape-design/components/select';
+import { OptionDefinition } from '@cloudscape-design/components/internal/components/option/interfaces';
 
 import styles from './NewConversation.module.css';
 import { AudioDetails, AudioSelection } from './types';
@@ -28,25 +29,37 @@ export function InputName({ jobName, setJobName }: InputNameProps) {
 }
 
 // type InputLanguageProps = {
-//     inputLanguage: string;
-//     setInputLanguage: React.Dispatch<React.SetStateAction<string>>;
+//     selectedOption: { label: string; value: string };
+//     setSelectedOption: React.Dispatch<React.SetStateAction<string>>;
 // };
 
-// export function InputLanguage({ inputLanguage, setInputLanguage }: InputLanguageProps) {
+// type InputSettings = {
+//     'input.lang': { label: string; value: string };
+// };
+
+
+// export function InputLanguage({ selectedOption, setSelectedOption }: InputLanguageProps) {
+
+//     // Update local settings state
+//     function updateSelection(option: string | OptionDefinition) {
+//         setSelectedOption(option);
+//     }
+
 //     return (
 //         <FormField
 //             label="Input language"
 //             description="Select the language of the input audio."
 //         >
 //             <Select
-//                 inputLanguage={inputLanguage}
-//                 onChange={({ detail }) => setInputLanguage(detail.inputLanguage)}
+//                 selectedOption={selectedOption}
+//                 onChange={({ detail }) => updateSelection(detail.selectedOption)}
 //                 options={[
 //                     { value: 'en-US', label: 'English (US)' },
 //                     { value: 'nl-NL', label: 'Dutch (Netherland)' },
 //                     { value: 'es-ES', label: 'Spanish (Spain)' },
 //                     { value: 'fr-FR', label: 'French (France)' },
 //                 ]}
+//                 placeholder="Choose Language"
 //             />
 //         </FormField>
 //     );
