@@ -28,30 +28,30 @@ export function InputName({ jobName, setJobName }: InputNameProps) {
 }
 
 
-type InputLanguageProps = {
-    inputLanguage: string;
-    setInputLanguage: React.Dispatch<React.SetStateAction<string>>;
-};
+// type InputLanguageProps = {
+//     inputLanguage: string;
+//     setInputLanguage: React.Dispatch<React.SetStateAction<string>>;
+// };
 
-export function InputLanguage({ inputLanguage, setInputLanguage }: InputLanguageProps) {
-    return (
-        <FormField
-            label="Input language"
-            description="Select the language of the input audio."
-        >
-            <Select
-                inputLanguage={inputLanguage}
-                onChange={({ detail }) => setInputLanguage(detail.inputLanguage)}
-                options={[
-                    { value: 'en-US', label: 'English (US)' },
-                    { value: 'nl-NL', label: 'Dutch (Netherland)' },
-                    { value: 'es-ES', label: 'Spanish (Spain)' },
-                    { value: 'fr-FR', label: 'French (France)' },
-                ]}
-            />
-        </FormField>
-    );
-}
+// export function InputLanguage({ inputLanguage, setInputLanguage }: InputLanguageProps) {
+//     return (
+//         <FormField
+//             label="Input language"
+//             description="Select the language of the input audio."
+//         >
+//             <Select
+//                 inputLanguage={inputLanguage}
+//                 onChange={({ detail }) => setInputLanguage(detail.inputLanguage)}
+//                 options={[
+//                     { value: 'en-US', label: 'English (US)' },
+//                     { value: 'nl-NL', label: 'Dutch (Netherland)' },
+//                     { value: 'es-ES', label: 'Spanish (Spain)' },
+//                     { value: 'fr-FR', label: 'French (France)' },
+//                 ]}
+//             />
+//         </FormField>
+//     );
+// }
 
 type AudioIdentificationTypeProps = {
     audioSelection: AudioSelection;

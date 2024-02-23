@@ -16,7 +16,7 @@ import * as settingOptions from '@/store/appSettings/settingOptions';
 import { useAppSettingsContext } from '@/store/appSettings';
 import { DEFAULT_SETTINGS } from '@/store/appSettings/defaultSettings';
 
-import CustomNotes from './CustomNotes';
+// import CustomNotes from './CustomNotes';
 
 export type AppSettings = {
     'app.region': { label: string; value: string };
@@ -96,7 +96,7 @@ export default function Settings() {
                                 label="Custom Note Tags"
                                 description="Doctor can select custom tags available for final AI generated analysis."
                             >
-                                <CustomNotes></CustomNotes>
+                                {/* <CustomNotes></CustomNotes> */}
                             </FormField>
                             <ExpandableSection headerText="Advanced">
                                 <FormField
