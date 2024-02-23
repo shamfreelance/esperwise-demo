@@ -1,5 +1,3 @@
-// Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
-// SPDX-License-Identifier: MIT-0
 import React, { useEffect, useMemo, useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
@@ -42,7 +40,7 @@ export default function NewConversation() {
     const [isSubmitting, setIsSubmitting] = useState<boolean>(false); // is job submitting
     const [formError, setFormError] = useState<string | JSX.Element[]>('');
     const [jobName, setJobName] = useState<string>(''); // form - job name
-    const [inputLanguage, setInputLanguage] = useState('en-US'); // Set default language
+    const [inputLanguage, setInputLanguage] = useState({ value: 'en-US', label: 'English (US)' }); // Set default language
     const [audioSelection, setAudioSelection] = useState<AudioSelection>('speakerPartitioning'); // form - audio selection
     // form - audio details
     const [audioDetails, setAudioDetails] = useState<AudioDetails>({
