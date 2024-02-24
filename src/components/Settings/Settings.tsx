@@ -15,6 +15,7 @@ import Spinner from '@cloudscape-design/components/spinner';
 import * as settingOptions from '@/store/appSettings/settingOptions';
 import { useAppSettingsContext } from '@/store/appSettings';
 import { DEFAULT_SETTINGS } from '@/store/appSettings/defaultSettings';
+import Multiselect from '@cloudscape-design/components/multiselect';
 
 // import CustomNotes from './CustomNotes';
 
@@ -22,6 +23,7 @@ export type AppSettings = {
     'app.region': { label: string; value: string };
     'app.apiTiming': { label: string; value: string };
     'app.language': { label: string; value: string };
+    'app.tags': { label: string; value: string };
 };
 
 export default function Settings() {
@@ -30,9 +32,20 @@ export default function Settings() {
     const [isSaving, setIsSaving] = useState(false);
     // Make a copy of appSettings, write back it after form validation
     const [settings, setSettings] = useState<AppSettings>(appSettings);
+    console.log(settings)
 
     // Update local settings state
     function updateSettings(settingKey: string, value: string | OptionDefinition) {
+        setSettings((prevSettings) => ({
+            ...prevSettings,
+            ...{
+                [settingKey]: value,
+            },
+        }));
+    }
+
+    // Update local settings state
+    function updateTag(settingKey: string, value: string | OptionDefinition | OptionDefinition[]) {
         setSettings((prevSettings) => ({
             ...prevSettings,
             ...{
@@ -68,6 +81,33 @@ export default function Settings() {
         { label: 'German', value: 'german' },
     ];
 
+    const tagOptions = [
+        {
+            label: 'Chief Complaint',
+            value: 'Chief Complaint',
+        },
+        {
+            label: 'History Of Present Illness',
+            value: 'History Of Present Illness',
+        },
+        {
+            label: 'Review Of Systems',
+            value: 'Review Of Systems',
+        },
+        {
+            label: 'Past Medical History',
+            value: 'Past Medical History',
+        },
+        {
+            label: 'Assessment',
+            value: 'Assessment',
+        },
+        {
+            label: 'Plan',
+            value: 'Plan',
+        },
+    ]
+
     return (
         <ContentLayout
             header={
@@ -101,13 +141,25 @@ export default function Settings() {
                         }
                     >
                         <SpaceBetween size={'m'}>
-                            {/* <FormField
+                            <FormField
                                 label="Custom Note Tags"
-                                description="Doctor can select custom tags available for final AI generated analysis."
+                                description="Doctor can select custom note tags available for final AI generated analysis."
                             >
-                                <CustomNotes />
-                            </FormField> */}
-                            <FormField label="Language" description="Select your preferred language.">
+                                <Multiselect
+                                    selectedOptions={[settings['app.tags']]}
+                                    onChange={({ detail }) => {
+                                        const selectedTags = detail.selectedOptions.map(option => ({
+                                            label: option.label,
+                                            value: option.value
+                                        }));
+                                        updateTag('app.tags', selectedTags);
+                                    }}
+                                    options={tagOptions}
+                                    placeholder="Choose Note Tags"
+                                />
+
+                            </FormField>
+                            <FormField label="Audio Language" description="Select your preferred language.">
                                 <Select
                                     selectedOption={settings['app.language']}
                                     onChange={({ detail }) => updateSettings('app.language', detail.selectedOption)}
