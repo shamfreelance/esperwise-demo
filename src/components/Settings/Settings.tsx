@@ -17,7 +17,7 @@ import * as settingOptions from '@/store/appSettings/settingOptions';
 import { useAppSettingsContext } from '@/store/appSettings';
 import { DEFAULT_SETTINGS } from '@/store/appSettings/defaultSettings';
 
-// import CustomNotes from './CustomNotes';
+import CustomNotes from './CustomNotes';
 
 export type AppSettings = {
     'app.region': { label: string; value: string };
@@ -32,7 +32,6 @@ export default function Settings() {
     const [isSaving, setIsSaving] = useState(false);
     // Make a copy of appSettings, write back it after form validation
     const [settings, setSettings] = useState<AppSettings>(appSettings);
-    console.log(settings);
 
     // Update local settings state
     function updateSettings(settingKey: string, value: string | OptionDefinition) {
@@ -145,7 +144,7 @@ export default function Settings() {
                                 label="Custom Note Tags"
                                 description="Doctor can select custom note tags available for final AI generated analysis."
                             >
-                                <Multiselect
+                                {/* <Multiselect
                                     selectedOptions={[settings['app.tags']]}
                                     onChange={({ detail }) => {
                                         const selectedTags = detail.selectedOptions.map((option) => ({
@@ -156,7 +155,8 @@ export default function Settings() {
                                     }}
                                     options={tagOptions}
                                     placeholder="Choose Note Tags"
-                                />
+                                /> */}
+                                <CustomNotes />
                             </FormField>
                             <FormField label="Audio Language" description="Select your preferred language.">
                                 <Select
