@@ -8,6 +8,7 @@ import Form from '@cloudscape-design/components/form';
 import FormField from '@cloudscape-design/components/form-field';
 import Header from '@cloudscape-design/components/header';
 import { OptionDefinition } from '@cloudscape-design/components/internal/components/option/interfaces';
+import Multiselect from '@cloudscape-design/components/multiselect';
 import Select from '@cloudscape-design/components/select';
 import SpaceBetween from '@cloudscape-design/components/space-between';
 import Spinner from '@cloudscape-design/components/spinner';
@@ -15,7 +16,6 @@ import Spinner from '@cloudscape-design/components/spinner';
 import * as settingOptions from '@/store/appSettings/settingOptions';
 import { useAppSettingsContext } from '@/store/appSettings';
 import { DEFAULT_SETTINGS } from '@/store/appSettings/defaultSettings';
-import Multiselect from '@cloudscape-design/components/multiselect';
 
 // import CustomNotes from './CustomNotes';
 
@@ -32,7 +32,7 @@ export default function Settings() {
     const [isSaving, setIsSaving] = useState(false);
     // Make a copy of appSettings, write back it after form validation
     const [settings, setSettings] = useState<AppSettings>(appSettings);
-    console.log(settings)
+    console.log(settings);
 
     // Update local settings state
     function updateSettings(settingKey: string, value: string | OptionDefinition) {
@@ -106,7 +106,7 @@ export default function Settings() {
             label: 'Plan',
             value: 'Plan',
         },
-    ]
+    ];
 
     return (
         <ContentLayout
@@ -148,16 +148,15 @@ export default function Settings() {
                                 <Multiselect
                                     selectedOptions={[settings['app.tags']]}
                                     onChange={({ detail }) => {
-                                        const selectedTags = detail.selectedOptions.map(option => ({
+                                        const selectedTags = detail.selectedOptions.map((option) => ({
                                             label: option.label,
-                                            value: option.value
+                                            value: option.value,
                                         }));
                                         updateTag('app.tags', selectedTags);
                                     }}
                                     options={tagOptions}
                                     placeholder="Choose Note Tags"
                                 />
-
                             </FormField>
                             <FormField label="Audio Language" description="Select your preferred language.">
                                 <Select
