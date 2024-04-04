@@ -2,7 +2,7 @@
     "name": "aws-healthscribe-demo",
     "version": "1.0.0",
     "scripts": {
-        "dev": "vite",
+        "dev": "vite --host",
         "build": "tsc && vite build",
         "serve": "vite preview",
         "lint:fix": "eslint ./src --ext .jsx,.js,.ts,.tsx --format visualstudio --quiet --fix --ignore-path ./.gitignore",
